@@ -1,0 +1,61 @@
+.App {
+  max-width: 860px;
+  margin: 2rem auto;
+
+  button {
+    background: none;
+    border: 2px solid #fefefe;
+    padding: 6px 12px;
+    border-radius: 5px;
+    color: #fefefe;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  button:hover {
+    transition: all ease-in 0.15s;
+    background: #651e94;
+    color: #fefefe;
+  }
+
+  .card-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+
+    .card {
+      position: relative;
+
+      .front {
+        transform: rotateY(90deg);
+        transition: all ease-in 0.15s;
+        position: absolute;
+      }
+
+      .back {
+        transition: all ease-in 0.15s;
+        transition-delay: 0.2s;
+      }
+
+      .flipped {
+        .front {
+          transform: rotateY(0deg);
+          transition-delay: 0.15s;
+        }
+        .back {
+          transform: rotateY(90deg);
+          transition-delay: 0s;
+        }
+      }
+
+      img {
+        width: 100%;
+        display: block;
+        border: 2px solid #fefefe;
+        border-radius: 10px;
+      }
+    }
+  }
+}
