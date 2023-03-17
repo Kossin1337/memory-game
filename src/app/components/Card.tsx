@@ -2,6 +2,8 @@ import React from "react";
 
 import { ICard } from "../../types/types";
 
+import "./Card.scss";
+
 interface CardProps {
   card: ICard;
   handleChoice: any;
@@ -22,7 +24,7 @@ export const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
         <img className="front" src={card.src} alt="card front" />
         <img
           className="back"
-          src="/img/cover.png"
+          src="public\assets\images\cover.png"
           onClick={handleClick}
           alt="card back"
         />

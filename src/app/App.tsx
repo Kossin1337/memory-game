@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Card } from "./components/Card";
 
@@ -6,13 +8,17 @@ import { ICard } from "../types/types";
 import "./App.scss";
 
 const cardImages = [
-  { src: "/img/shroom-1.png", matched: false },
-  { src: "/img/weed-1.png", matched: false },
-  { src: "/img/ciggaretes-1.png", matched: false },
-  { src: "/img/zippo-1.png", matched: false },
-  { src: "/img/cygar-1.png", matched: false },
-  { src: "/img/white-1.png", matched: false },
+  { src: "/public/images/shroom-1.png", matched: false },
+  { src: "/public/images/weed-1.png", matched: false },
+  { src: "/public/images/ciggaretes-1.png", matched: false },
+  { src: "/public/images/zippo-1.png", matched: false },
+  { src: "/public/images/cygar-1.png", matched: false },
+  { src: "/public/images/white-1.png", matched: false },
 ];
+
+/* ADD CONTEXT FOR THIS SHIT */
+
+/* IMAGE LOADING FOR THE FUTURE */
 
 export const App = () => {
   const [cards, setCards] = useState<ICard[] | []>([]);
@@ -20,6 +26,8 @@ export const App = () => {
   const [choiceOne, setChoiceOne] = useState<ICard | null>(null);
   const [choiceTwo, setChoiceTwo] = useState<ICard | null>(null);
   const [disabled, setDisabled] = useState<boolean>(false);
+
+  const [gridSize, setGridSize] = useState<string>("3x4");
 
   /* shuffle cards */
   const shuffleCards = () => {
@@ -46,6 +54,9 @@ export const App = () => {
       matchCards(choiceOne, choiceTwo);
     }
   }, [choiceOne, choiceTwo]);
+
+  /* useEffect for changing gridSize */
+  useEffect(() => {}, [gridSize]);
 
   /* Match cards */
   const matchCards = (cardOne: ICard, cardTwo: ICard) => {
