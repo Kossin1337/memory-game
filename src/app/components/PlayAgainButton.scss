@@ -1,0 +1,24 @@
+button {
+  margin-top: 2rem;
+  background: none;
+  border: 2px solid #fefefe;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: #fefefe;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1em;
+
+  font-family: var(--main-font) !important;
+
+  &:hover {
+    transition: all ease-in 0.075s;
+    background: var(--main-blue);
+    color: var(--sub-bg);
+    border: 2px solid var(--sub-bg);
+
+    box-shadow: 5px 5px 5px 5px rgba($color: var(--main-yellow), $alpha: 0.25);
+
+    transform: scale(1.2);
+  }
+}

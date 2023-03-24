@@ -24,7 +24,7 @@ export const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
         <img className="front" src={card.src} alt="card front" />
         <img
           className="back"
-          src="public\assets\images\cover.png"
+          src="./public/assets/images/cover.png"
           onClick={handleClick}
           alt="card back"
         />

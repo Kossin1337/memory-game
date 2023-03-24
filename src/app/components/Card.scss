@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  // width: 120px;
   // cursor: ;
 
   .front {
@@ -26,7 +27,8 @@
 
   img {
     width: 100%;
-    opacity: 0.25;
+    height: 100%;
+    // opacity: 0.25;
     display: block;
     border: 2px solid #fefefe;
     border-radius: 10px;

@@ -1,17 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap");
 
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  background: #121212;
-  color: #fefefe;
+
+  /* variables */
+  --main-bg: #050505;
+  --sub-bg: #2f2e2c;
+  --main-yellow: #ffc40a;
+  --sub-yellow: #f8de7e;
+  --main-blue: #8ab9f1;
+  --sub-blue: #689bf1;
 }
 
-/* SPECIAL FONT IMPORT */
-@font-face {
-  font-family: "CHOPSIC";
-  src: url("../../public/assets/fonts/Chopsic.otf") format("opentype");
+body {
+  font-family: "Kanit", sans-serif;
+  text-align: center;
+  background: #050505;
+  color: #ffc40a;
 }
