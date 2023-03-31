@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, createContext } from "react";
 import { Card } from "./components/Card";
-
 import { ICard } from "../types/types";
+
+import Footer from "./components/Footer";
 
 import "./App.scss";
 import { PlayAgainButton } from "./components/PlayAgainButton";
@@ -145,6 +146,7 @@ export const App = () => {
         <PlayAgainButton shuffleCards={shuffleCards} />
         <p>Number of turns: {turns}</p>
       </div>
+      <Footer />
     </GameContext.Provider>
   );
 };

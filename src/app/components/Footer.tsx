@@ -4,9 +4,13 @@ import React from "react";
 import "./Footer.scss";
 
 const Footer = () => {
+  const date = new Date().getFullYear();
+
   return (
-    <div>
-      <div className="made-by">Copyright Kossin</div>
+    <div className="footer">
+      <div className="main-content">
+        {/* <span className="made-by">&copy ${date} Kossin</span> */}
+      </div>
     </div>
   );
 };

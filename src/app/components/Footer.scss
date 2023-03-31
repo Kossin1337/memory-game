@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .made-by {
+    // font-weight: 700;
+    font-family: var(--main-font) !important;
+
+    display: flex;
+    align-items: center;
+  }
+}
