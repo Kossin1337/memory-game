@@ -4,6 +4,7 @@ import React, { useState, useEffect, createContext } from "react";
 import { Card } from "./components/Card";
 import { ICard } from "../types/types";
 
+import Sidebar from "./components/sidebar/Sidebar";
 import Footer from "./components/Footer";
 
 import "./App.scss";
@@ -131,20 +132,25 @@ export const App = () => {
   return (
     <GameContext.Provider value={defaultGameContext}>
       <div className="App">
-        <h1 className="application-header">Match the cards</h1>
-        <div className="card-grid">
-          {cards.map((card: ICard) => (
-            <Card
-              key={card.id}
-              card={card}
-              handleChoice={handleChoice}
-              flipped={card === choiceOne || card === choiceTwo || card.matched}
-              disabled={disabled}
-            />
-          ))}
+        <Sidebar />
+        <div className="app-content">
+          <h1 className="application-header">Match the cards</h1>
+          <div className="card-grid">
+            {cards.map((card: ICard) => (
+              <Card
+                key={card.id}
+                card={card}
+                handleChoice={handleChoice}
+                flipped={
+                  card === choiceOne || card === choiceTwo || card.matched
+                }
+                disabled={disabled}
+              />
+            ))}
+          </div>
+          <PlayAgainButton shuffleCards={shuffleCards} />
+          <p>Number of turns: {turns}</p>
         </div>
-        <PlayAgainButton shuffleCards={shuffleCards} />
-        <p>Number of turns: {turns}</p>
       </div>
       <Footer />
     </GameContext.Provider>
