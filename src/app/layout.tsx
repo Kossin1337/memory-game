@@ -19,11 +19,7 @@ const myFont = localFont({
   weight: "nomral",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout() {
   return (
     <html lang="en" className={myFont.className}>
       <style jsx global>{`

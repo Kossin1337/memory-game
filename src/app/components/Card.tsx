@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import { ICard } from "../../types/types";
 
@@ -21,10 +22,10 @@ export const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
   return (
     <div className="card">
       <div className={flipped ? "flipped" : ""}>
-        <img className="front" src={card.src} alt="card front" />
-        <img
+        <Image className="front" src={card.src} alt="card front" />
+        <Image
           className="back"
-          src="./public/assets/images/cover.png"
+          src="../../public/images/shroom-1.png"
           onClick={handleClick}
           alt="card back"
         />

@@ -131,7 +131,7 @@ export const App = () => {
 
   return (
     <GameContext.Provider value={defaultGameContext}>
-      <div className="App">
+      <div className="application-wrapper">
         <Sidebar />
         <div className="app-content">
           <h1 className="application-header">Match the cards</h1>
@@ -151,8 +151,8 @@ export const App = () => {
           <PlayAgainButton shuffleCards={shuffleCards} />
           <p>Number of turns: {turns}</p>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </GameContext.Provider>
   );
 };
