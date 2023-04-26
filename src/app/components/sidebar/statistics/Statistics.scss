@@ -3,4 +3,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .stat-box {
+    
+  }
+
+  .easy {
+    background: rgba(105, 179, 76, 0.35);
+
+    &:hover {
+      background: rgba(105, 179, 76, 0.75);
+    }
+  }
+
+  .casual {
+    background: rgba(250, 183, 51, 0.35);
+
+    &:hover {
+      background: rgba(250, 183, 51, 0.75);
+    }
+  }
+
+  .hard {
+    background: rgba(255, 142, 21, 0.35);
+
+    &:hover {
+      background: rgba(255, 142, 21, 0.75);
+    }
+  }
+
+  .ultra {
+    background: rgba(255, 13, 13, 0.35);
+
+    &:hover {
+      background: rgba(255, 13, 13, 0.75);
+    }
+  }
 }

@@ -7,5 +7,9 @@ interface IPlayAgainButton {
 }
 
 export const PlayAgainButton = ({ shuffleCards }: IPlayAgainButton) => {
-  return <button onClick={shuffleCards}>New Game</button>;
+  return (
+    <button onClick={shuffleCards}>
+      <span>NEW GAME</span>
+    </button>
+  );
 };

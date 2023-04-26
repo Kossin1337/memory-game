@@ -1,7 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-import { ICard } from "../../types/types";
+import { ICard } from "../../../types/types";
+
+import cover from "../../../../public/images/cover.png";
 
 import "./Card.scss";
 
@@ -12,20 +14,30 @@ interface CardProps {
   disabled: boolean;
 }
 
-export const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
+const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
   const handleClick = () => {
     if (!disabled) {
       handleChoice(card);
     }
   };
 
+  /* add handleFrontClick */
+
   return (
     <div className="card">
       <div className={flipped ? "flipped" : ""}>
-        <Image className="front" src={card.src} alt="card front" />
+        <Image
+          className="front"
+          width={200}
+          height={200}
+          src={card.src}
+          alt="card front"
+        />
         <Image
           className="back"
-          src="../../public/images/shroom-1.png"
+          width={200}
+          height={200}
+          src={cover}
           onClick={handleClick}
           alt="card back"
         />
@@ -33,3 +45,5 @@ export const Card = ({ card, handleChoice, flipped, disabled }: CardProps) => {
     </div>
   );
 };
+
+export default Card;

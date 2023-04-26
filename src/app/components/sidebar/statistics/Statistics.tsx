@@ -1,7 +1,7 @@
 import React from "react";
 import "./Statistics.scss";
 
-export const Statistics = () => {
+const Statistics = () => {
   /* Statistics like: total games */
   /* AVG turn on every difficulty level */
   /* different card decks collected */
@@ -21,29 +21,34 @@ export const Statistics = () => {
 
   return (
     <div className="statistics-container">
-      <h3>Statistics</h3>
       <div className="stat-box">
         <h4>Total Games</h4>
         <span>137</span>
       </div>
+      <div className="stat-box">
+        <h4>AVG TURNS</h4>
+        <span>6.9</span>
+      </div>
       <div className="difficulties">
-        <div className="difficulty">
+        <div className="difficulty easy">
           <span className="difficulty-title easy">EASY</span>
           <span className="difficulty-turns">3x4</span>
         </div>
-        <div className="difficulty">
-          <span className="difficulty-title medium">MEDIUM</span>
+        <div className="difficulty casual">
+          <span className="difficulty-title">MEDIUM</span>
           <span className="difficulty-turns">4x5</span>
         </div>
-        <div className="difficulty">
-          <span className="difficulty-title hard">HARD</span>
+        <div className="difficulty hard">
+          <span className="difficulty-title ">HARD</span>
           <span className="difficulty-turns">5x6</span>
         </div>
-        <div className="difficulty">
-          <span className="difficulty-title hard">ULTRA</span>
+        <div className="difficulty ultra">
+          <span className="difficulty-title">ULTRA</span>
           <span className="difficulty-turns">6x7</span>
         </div>
       </div>
     </div>
   );
 };
+
+export default Statistics;

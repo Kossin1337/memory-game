@@ -6,10 +6,10 @@ import localFont from "next/font/local";
 import "./index.scss";
 
 /* Application metadata */
-export const metadata = {
-  title: "Memory Cards Game",
-  description: "Using Next.js 13 & React.js & TypeScript & SCSS",
-};
+// export const metadata = {
+//   title: "Memory Cards Game",
+//   description: "Using Next.js 13 & React.js & TypeScript & SCSS",
+// };
 
 /* Local font import */
 const myFont = localFont({

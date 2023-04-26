@@ -1,7 +1,7 @@
 .card {
   position: relative;
-  // width: 120px;
-  // cursor: ;
+  display: grid;
+  place-content: center;
 
   .front {
     transform: rotateY(90deg);
@@ -28,9 +28,24 @@
   img {
     width: 100%;
     height: 100%;
+    max-width: 200px;
+    max-height: 200px;
     // opacity: 0.25;
     display: block;
     border: 2px solid #fefefe;
     border-radius: 10px;
   }
+
+  .back {
+    opacity: 0.25;
+    transition-delay: 0;
+    transition: all 0s;
+
+    &:hover {
+      opacity: 0.35;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
 }

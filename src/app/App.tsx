@@ -1,25 +1,26 @@
 "use client";
 
 import React, { useState, useEffect, createContext } from "react";
-import { Card } from "./components/Card";
 import { ICard } from "../types/types";
 
+/* components */
 import Sidebar from "./components/sidebar/Sidebar";
+import Grid from "./components/card-grid/Grid";
 import Footer from "./components/Footer";
 
 import "./App.scss";
 import { PlayAgainButton } from "./components/PlayAgainButton";
 
 const cardImages = [
-  { src: "../../public/images/shroom-1.png", matched: false },
-  { src: "../../public/images/weed-1.png", matched: false },
-  { src: "../../public/images/ciggaretes-1.png", matched: false },
-  { src: "../../public/images/zippo-1.png", matched: false },
-  { src: "../../public/images/cygar-1.png", matched: false },
-  { src: "../../public/images/white-1.png", matched: false },
+  { src: "/images/shroom-1.png", matched: false },
+  { src: "/images/weed-1.png", matched: false },
+  { src: "/images/ciggaretes-1.png", matched: false },
+  { src: "/images/zippo-1.png", matched: false },
+  { src: "/images/cygar-1.png", matched: false },
+  { src: "/images/white-1.png", matched: false },
 ];
 
-/* ADD CONTEXT FOR THIS SHIT */
+const ghostCardImages = [{ src: "/images/shroom-1.png", matched: false }];
 
 /* IMAGE LOADING FOR THE FUTURE */
 
@@ -27,6 +28,7 @@ const cardImages = [
 /* 5 DIFFERENT MODES AND BACKGROUND CHANGES DEPENDING ON THE DECK */
 /* DEFAULT 2 SWITCHABLE WEBSITE MODES (DARK/XXX) */
 
+/* ADD CONTEXT FOR THIS SHIT */
 const defaultGameContext = {
   totalGames: 0,
   statistics: {
@@ -62,15 +64,35 @@ export const App = () => {
   const [choiceTwo, setChoiceTwo] = useState<ICard | null>(null);
   const [disabled, setDisabled] = useState<boolean>(false);
 
-  const [gridSize, setGridSize] = useState<string>("3x4");
-  /* DIFFERENT GRID SIZES */
   /* 3x4 = 12, 4x5 = 20, 5x6 = 30 & 6x7 = 42 */
+  const [grid, setGrid] = useState<string>("3x4");
   // first 2 are free (user has 10 cards everytime he unlocks a new deck)
   // 5 are for quests
   // 6 are for ADS
 
+  const setDifficulty = (gridSize: string) => {
+    const numbers = gridSize.split("x").map((num) => parseInt(num)); // split the string and convert each number to an integer
+    const product = numbers.reduce((total, num) => total * num); // calculate the product of the two numbers
+    return product;
+  };
+
   /* shuffle cards */
   const shuffleCards = () => {
+    /* Shuffle cards to the deck */
+    const gridSize = setDifficulty(grid);
+    const cards = new Set();
+    const images = cardImages;
+    for (let i = 0; i < gridSize / 2; i++) {
+      console.log(i);
+      if (!cards.has(images[i])) {
+        cards.add(images[i]);
+        // Do something with the item at the current position
+        console.log(images[i]);
+      }
+    }
+
+    console.log(cards);
+
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
@@ -95,9 +117,6 @@ export const App = () => {
     }
   }, [choiceOne, choiceTwo]);
 
-  /* useEffect for changing gridSize */
-  useEffect(() => {}, [gridSize]);
-
   /* Match cards */
   const matchCards = (cardOne: ICard, cardTwo: ICard) => {
     if (cardOne.src === cardTwo.src) {
@@ -112,7 +131,7 @@ export const App = () => {
       });
       resetTurn();
     } else {
-      setTimeout(() => resetTurn(), 1000);
+      setTimeout(() => resetTurn(), 500);
     }
   };
 
@@ -129,27 +148,29 @@ export const App = () => {
     shuffleCards();
   }, []);
 
+  /* useEffect for changing gridSize */
+  useEffect(() => {
+    shuffleCards();
+  }, [grid]);
+
   return (
     <GameContext.Provider value={defaultGameContext}>
       <div className="application-wrapper">
-        <Sidebar />
+        <Sidebar setGrid={setGrid} />
         <div className="app-content">
           <h1 className="application-header">Match the cards</h1>
-          <div className="card-grid">
-            {cards.map((card: ICard) => (
-              <Card
-                key={card.id}
-                card={card}
-                handleChoice={handleChoice}
-                flipped={
-                  card === choiceOne || card === choiceTwo || card.matched
-                }
-                disabled={disabled}
-              />
-            ))}
-          </div>
+          <Grid
+            cards={cards}
+            handleChoice={handleChoice}
+            choiceOne={choiceOne}
+            choiceTwo={choiceTwo}
+            disabled={disabled}
+          />
           <PlayAgainButton shuffleCards={shuffleCards} />
-          <p>Number of turns: {turns}</p>
+          <div className="turns-counter">
+            <span className="turn-text">Turns</span>
+            <span className="turn-number">{turns}</span>
+          </div>
         </div>
         <Footer />
       </div>

@@ -7,8 +7,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="main-content">
-        <div className="icons">settings</div>
-        <span className="made-by">{`&copy ${new Date().getFullYear()} Kossin`}</span>
+        <p className="made-by">{`Copyright ${new Date().getFullYear()} Kossin`}</p>
       </div>
     </div>
   );
