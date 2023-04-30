@@ -1,0 +1,50 @@
+.settings {
+  min-width: 320px;
+
+  .settings-header {
+    font-family: var(--main-font);
+    font-size: 1.6rem;
+  }
+
+  .theme-wrapper {
+    margin-top: 1.5rem;
+
+    .themes-header {
+      font-family: var(--main-font);
+      font-size: 1.4rem;
+    }
+
+    .theme-selection {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .theme {
+        width: 100%;
+
+        text-align: center;
+
+        .theme-title {
+          font-family: var(--main-font);
+          font-size: 1.2rem;
+        }
+      }
+
+      .green {
+      }
+
+      .yellow {
+      }
+
+      .purple {
+      }
+
+      .blue {
+      }
+
+      .magenta {
+      }
+    }
+  }
+}

@@ -1,7 +1,11 @@
 import React from "react";
 import "./Statistics.scss";
 
-const Statistics = () => {
+interface IStatistics {
+  grid: string;
+}
+
+const Statistics = ({ grid }: IStatistics) => {
   /* Statistics like: total games */
   /* AVG turn on every difficulty level */
   /* different card decks collected */
@@ -23,7 +27,7 @@ const Statistics = () => {
     <div className="statistics-container">
       <div className="stat-box">
         <span className="total-games-text">Total Games</span>
-        <span className="total-games-text">137</span>
+        <span className="total-games-value">137</span>
       </div>
       <div className="difficulties">
         <div className="difficulty easy">

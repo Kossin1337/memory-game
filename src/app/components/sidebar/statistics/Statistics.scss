@@ -7,7 +7,8 @@
   .stat-box {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 2rem 1rem;
 
     span {
       font-family: var(--main-font);
@@ -18,7 +19,7 @@
     }
 
     .total-games-value {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 

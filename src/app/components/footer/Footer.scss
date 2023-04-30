@@ -3,12 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 0 0.25rem 0;
 
   .made-by {
-    // font-weight: 700;
     font-family: var(--main-font) !important;
 
     display: flex;
     align-items: center;
+
+    opacity: 0.9;
   }
 }

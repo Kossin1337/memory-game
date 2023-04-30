@@ -19,9 +19,25 @@
       transform: rotateY(0deg);
       transition-delay: 0.15s;
     }
+
     .back {
       transform: rotateY(90deg);
       transition-delay: 0s;
+    }
+  }
+
+  .no-flip {
+    .front {
+      opacity: 0.75;
+    }
+
+    .back {
+      cursor: pointer;
+
+      &:hover {
+        transition: transform 0.1s ease-in;
+        transform: scale(0.9);
+      }
     }
   }
 
@@ -30,7 +46,6 @@
     height: 100%;
     max-width: 200px;
     max-height: 200px;
-    // opacity: 0.25;
     display: block;
     border: 2px solid #fefefe;
     border-radius: 10px;
@@ -38,11 +53,23 @@
 
   .back {
     opacity: 0.25;
-    transition-delay: 0;
-    transition: all 0s;
 
     &:hover {
       opacity: 0.35;
+    }
+  }
+}
+
+.matched {
+  .flipped {
+    .front {
+      opacity: 1;
+    }
+  }
+
+  .no-flip {
+    .front {
+      opacity: 0.75;
     }
   }
 }

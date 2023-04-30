@@ -1,0 +1,69 @@
+.diffuculty-box {
+  .dif-levels {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    .dif-box {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 15px;
+      background-color: #101010;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      font-family: var(--main-font);
+
+      .type {
+        font-size: 1rem;
+      }
+
+      .value {
+        font-size: 1.6rem;
+        color: var(--main-yellow);
+        opacity: 0.75;
+      }
+
+      &:hover {
+        .value {
+          opacity: 1;
+        }
+      }
+    }
+
+    .easy {
+      background: rgba(105, 179, 76, 0.35);
+
+      &:hover {
+        background: rgba(105, 179, 76, 0.75);
+      }
+    }
+
+    .casual {
+      background: rgba(250, 183, 51, 0.35);
+
+      &:hover {
+        background: rgba(250, 183, 51, 0.75);
+      }
+    }
+
+    .hard {
+      background: rgba(255, 142, 21, 0.35);
+
+      &:hover {
+        background: rgba(255, 142, 21, 0.75);
+      }
+    }
+
+    .ultra {
+      background: rgba(255, 13, 13, 0.35);
+
+      &:hover {
+        background: rgba(255, 13, 13, 0.75);
+      }
+    }
+  }
+}

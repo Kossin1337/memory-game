@@ -6,10 +6,12 @@ interface IPlayAgainButton {
   shuffleCards: () => void;
 }
 
-export const PlayAgainButton = ({ shuffleCards }: IPlayAgainButton) => {
+const PlayAgainButton = ({ shuffleCards }: IPlayAgainButton) => {
   return (
-    <button onClick={shuffleCards}>
+    <button className="play-again-button" onClick={shuffleCards}>
       <span>NEW GAME</span>
     </button>
   );
 };
+
+export default PlayAgainButton;

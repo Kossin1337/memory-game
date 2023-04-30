@@ -1,105 +1,40 @@
-/* NAVIGATION */
-export const navVariants = {
+/* SIDEBAR */
+export const sidebarVariant = {
   hidden: {
     opacity: 0,
-    y: -80,
+    x: "-100%",
     transition: {
       type: "spring",
-      stiffness: 300,
-      damping: 140,
     },
   },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 150,
-      delay: 0.25,
-    },
-  },
-};
-
-export const navMenuVariants = {
-  hidden: {
-    opacity: 0,
-    y: "-100vh",
-    transition: {
-      type: "spring",
-      stiffness: 25,
-      damping: 150,
-    },
-  },
-  mobileOpen: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 75,
-      duration: 0.15,
-    },
-  },
-  mobileClosed: {
-    opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
       type: "spring",
       stiffness: 50,
-      duration: 0.15,
+      duration: 0.5,
     },
   },
 };
 
-/* MAIN SECTION */
-export const mainHeroTextVariant = (delay) => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
+export const sidebarMenu = {
+  closed: {
+    rotate: [180, 0],
   },
-  show: {
-    y: 0,
-    opacity: 1,
+  hover: {
+    x: [-20, 20],
     transition: {
+      repeat: Infinity,
       type: "tween",
-      duration: 1.25,
-      delay,
+      ease: "linear",
     },
   },
-});
+  open: { rotate: [0, 180] },
+};
 
-export const mainSubTextVariant = (delay) => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      duration: 1.25,
-      delay,
-    },
-  },
-});
-
-export const mainLinks = (delay) => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 1.25,
-      delay,
-    },
-  },
-});
-
-export const gifVariant = (delay) => ({
+/* --- GAME SECTION  --- */
+export const gridNavigation = {
   hidden: {
     scale: 0.25,
     opacity: 0,
@@ -110,57 +45,84 @@ export const gifVariant = (delay) => ({
     transition: {
       type: "spring",
       duration: 1.25,
-      delay,
+      delay: 0,
     },
   },
-});
+};
 
-/* FEATURED PROJECTS */
-export const projectButtonVariant = (delay) => ({
+/* GRID */
+export const gridVariant = (delay) => ({
   hidden: {
-    scale: 0.25,
-    opacity: 0,
+    scale: 0.75,
+    opacity: 0.7,
   },
   show: {
     scale: 1,
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 1.25,
+      stiffness: 100,
+      damping: 15,
+      duration: 1,
+    },
+  },
+});
+
+/* CARD */
+export const cardVariant = (delay) => ({
+  hidden: {
+    scale: 0.25,
+    opacity: 0,
+  },
+  clicked: {
+    scale: 1.5,
+    transition: {
+      type: "spring",
+      stiffness: 250,
+      damping: 15,
+      duration: 0.25,
+      delay: 0.35,
+    },
+  },
+  display: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 0.75,
+      stiffness: 100,
+      damping: 15,
       delay,
     },
   },
 });
 
-/* ABOUT */
-
-/* CONTACT */
-
-// CONTACT ALERT
-export const contactAlertVariant = () => ({
+/* MODAL */
+export const backdropVariants = {
   hidden: {
-    y: "-75vh",
     opacity: 0,
+    transition: {
+      type: "spring",
+      stiffness: 75,
+    },
   },
   visible: {
-    y: "0",
-    x: "0",
     opacity: 1,
     transition: {
-      duration: 1,
       type: "spring",
-      damping: 25,
-      stiffness: 500,
+      stiffness: 75,
     },
   },
-  exit: {
-    y: "100vh",
-    opacity: 0,
-  },
-});
+};
+
+export const modalVariants = {
+  hidden: { y: "-100vh", opacity: 0 },
+  visible: { y: "0vh", opacity: 1 },
+  exit: { y: "-100vh", opacity: 0 },
+};
 
 /* FOOTER */
-export const footerVariants = {
+export const footerVariant = {
   hidden: {
     opacity: 0,
     y: "100%",
@@ -175,13 +137,13 @@ export const footerVariants = {
     transition: {
       type: "spring",
       stiffness: 75,
-      duration: 0.5,
+      duration: 0.75,
       delay: 0,
     },
   },
 };
 
-/* COMMON */
+/* COMMON - slide, fade, zoom */
 export const slideIn = (direction, type, delay, duration) => ({
   hidden: {
     opacity: 0,
@@ -200,78 +162,6 @@ export const slideIn = (direction, type, delay, duration) => ({
     },
   },
 });
-
-export const dropIn = {
-  hidden: {
-    y: "-100vh",
-    opacity: 0,
-  },
-  visible: {
-    y: "0",
-    opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
-    },
-  },
-  exit: {
-    y: "100vh",
-    opacity: 0,
-  },
-};
-
-export const staggerContainer = (staggerChildren, delayChildren) => ({
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren,
-      delayChildren,
-    },
-  },
-});
-
-export const textVariant = (delay) => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 1.25,
-      delay,
-    },
-  },
-});
-
-export const textContainer = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: (i = 1) => ({
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: i * 0.1 },
-  }),
-};
-
-export const textVariant2 = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "tween",
-      ease: "easeIn",
-    },
-  },
-};
 
 export const fadeIn = (direction, type, delay, duration) => ({
   hidden: {
@@ -308,3 +198,13 @@ export const zoomIn = (delay, duration) => ({
     },
   },
 });
+
+// export const staggerContainer = (staggerChildren, delayChildren) => ({
+//   hidden: {},
+//   visible: {
+//     transition: {
+//       staggerChildren,
+//       delayChildren,
+//     },
+//   },
+// });

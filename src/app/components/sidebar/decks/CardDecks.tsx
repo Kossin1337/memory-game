@@ -10,9 +10,25 @@ const CardDecks = () => {
     <div className="decks-wrapper">
       <div className="decks">
         <div className="deck">
-          <span className="deck-name">DRUGS</span>
+          <div className="col">
+            <span className="deck-name">GHOSTS</span>
+            <span className="deck-count">10/21</span>
+          </div>
           <div className="image"></div>
-          <span className="deck-count">10/21</span>
+        </div>
+        <div className="deck">
+          <div className="col">
+            <span className="deck-name">DRUGS</span>
+            <span className="deck-count">10/21</span>
+          </div>
+          <div className="image"></div>
+        </div>
+        <div className="deck logout">
+          <div className="col">
+            <span className="deck-name">LOG-IN</span>
+            <span className="deck-count">---</span>
+          </div>
+          <div className="image"></div>
         </div>
       </div>
     </div>

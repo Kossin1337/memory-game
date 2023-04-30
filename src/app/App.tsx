@@ -5,11 +5,10 @@ import { ICard } from "../types/types";
 
 /* components */
 import Sidebar from "./components/sidebar/Sidebar";
-import Grid from "./components/card-grid/Grid";
-import Footer from "./components/Footer";
+import Game from "./components/game/Game";
+import Footer from "./components/footer/Footer";
 
 import "./App.scss";
-import { PlayAgainButton } from "./components/PlayAgainButton";
 
 const cardImages = [
   { src: "/images/shroom-1.png", matched: false },
@@ -20,7 +19,29 @@ const cardImages = [
   { src: "/images/white-1.png", matched: false },
 ];
 
-const ghostCardImages = [{ src: "/images/shroom-1.png", matched: false }];
+const ghostCardImages = [
+  { src: "/ghosts/ghost1.png", matched: false },
+  { src: "/ghosts/ghost2.png", matched: false },
+  { src: "/ghosts/ghost3.png", matched: false },
+  { src: "/ghosts/ghost4.png", matched: false },
+  { src: "/ghosts/ghost5.png", matched: false },
+  { src: "/ghosts/ghost6.png", matched: false },
+  { src: "/ghosts/ghost7.png", matched: false },
+  { src: "/ghosts/ghost8.png", matched: false },
+  { src: "/ghosts/ghost9.png", matched: false },
+  { src: "/ghosts/ghost10.png", matched: false },
+  { src: "/ghosts/ghost11.png", matched: false },
+  { src: "/ghosts/ghost12.png", matched: false },
+  { src: "/ghosts/ghost13.png", matched: false },
+  { src: "/ghosts/ghost14.png", matched: false },
+  { src: "/ghosts/ghost15.png", matched: false },
+  { src: "/ghosts/ghost16.png", matched: false },
+  { src: "/ghosts/ghost17.png", matched: false },
+  { src: "/ghosts/ghost18.png", matched: false },
+  { src: "/ghosts/ghost19.png", matched: false },
+  { src: "/ghosts/ghost20.png", matched: false },
+  { src: "/ghosts/ghost21.png", matched: false },
+];
 
 /* IMAGE LOADING FOR THE FUTURE */
 
@@ -57,7 +78,14 @@ const defaultGameContext = {
 
 const GameContext = createContext(defaultGameContext);
 
+interface ICardTemplate {
+  src: string;
+  matched: boolean;
+}
+
 export const App = () => {
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [finished, setFinished] = useState<boolean>(false);
   const [cards, setCards] = useState<ICard[] | []>([]);
   const [turns, setTurns] = useState<number>(0);
   const [choiceOne, setChoiceOne] = useState<ICard | null>(null);
@@ -70,37 +98,49 @@ export const App = () => {
   // 5 are for quests
   // 6 are for ADS
 
-  const setDifficulty = (gridSize: string) => {
-    const numbers = gridSize.split("x").map((num) => parseInt(num)); // split the string and convert each number to an integer
-    const product = numbers.reduce((total, num) => total * num); // calculate the product of the two numbers
-    return product;
+  const getDifficulty = (grid: string) => {
+    const numbers = grid.split("x").map((num) => parseInt(num)); // split the string and convert each number to an integer
+    const gridSize = numbers.reduce((total, num) => total * num); // calculate the product of the two numbers
+    return gridSize;
+  };
+
+  const changeGrid = (grid: string) => {
+    setGrid(grid);
+    setLoaded(false);
   };
 
   /* shuffle cards */
   const shuffleCards = () => {
-    /* Shuffle cards to the deck */
-    const gridSize = setDifficulty(grid);
-    const cards = new Set();
-    const images = cardImages;
-    for (let i = 0; i < gridSize / 2; i++) {
-      console.log(i);
-      if (!cards.has(images[i])) {
-        cards.add(images[i]);
-        // Do something with the item at the current position
-        console.log(images[i]);
+    setLoaded(false);
+    setCards([]);
+    const gridSize = getDifficulty(grid);
+    const images = new Set<ICardTemplate>(ghostCardImages);
+    console.log("Grid Size: ", gridSize);
+
+    function getRandomSet(originalSet: Set<ICardTemplate>, n: number) {
+      const randomSet = new Set();
+      while (randomSet.size < n) {
+        const randomIndex = Math.floor(Math.random() * originalSet.size);
+        const randomItem = Array.from(originalSet)[randomIndex];
+        randomSet.add(randomItem);
       }
+      return randomSet;
     }
 
-    console.log(cards);
+    const selected = getRandomSet(images, gridSize / 2);
 
-    const shuffledCards = [...cardImages, ...cardImages]
+    let shuffledCards = [...Array.from(selected), ...Array.from(selected)]
       .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random() }));
+      .map((card: any, index) => ({
+        ...card,
+        id: `${index}-${Math.random()}`,
+      }));
 
     setChoiceOne(null);
     setChoiceTwo(null);
     setCards(shuffledCards);
     setTurns(0);
+    setLoaded(true);
   };
 
   /* Handle a choice */
@@ -156,23 +196,19 @@ export const App = () => {
   return (
     <GameContext.Provider value={defaultGameContext}>
       <div className="application-wrapper">
-        <Sidebar setGrid={setGrid} />
-        <div className="app-content">
-          <h1 className="application-header">Match the cards</h1>
-          <Grid
-            cards={cards}
-            handleChoice={handleChoice}
-            choiceOne={choiceOne}
-            choiceTwo={choiceTwo}
-            disabled={disabled}
-          />
-          <PlayAgainButton shuffleCards={shuffleCards} />
-          <div className="turns-counter">
-            <span className="turn-text">Turns</span>
-            <span className="turn-number">{turns}</span>
-          </div>
-        </div>
-        <Footer />
+        <Sidebar grid={grid} setGrid={changeGrid} />
+        <Game
+          loaded={loaded}
+          grid={grid}
+          turns={turns}
+          cards={cards}
+          handleChoice={handleChoice}
+          choiceOne={choiceOne}
+          choiceTwo={choiceTwo}
+          disabled={disabled}
+          shuffleCards={shuffleCards}
+        />
+        {/* <Footer /> */}
       </div>
     </GameContext.Provider>
   );
