@@ -1,0 +1,11 @@
+.login-modal {
+  z-index: 1000;
+  min-width: 320px;
+
+  background-color: rgba(10, 10, 10, 0.5);
+
+  .modal-header {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+  }
+}

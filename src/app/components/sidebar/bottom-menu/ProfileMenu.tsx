@@ -30,22 +30,25 @@ const ProfileMenu = () => {
             onClick={() => setOpenLogin(true)}
           >
             <span className="action-title">LOGIN</span>
-            <RegisterIcon />
+            <JoinIcon />
+            {openLogin && (
+              <Login isOpen={openLogin} onClose={() => setOpenLogin(false)} />
+            )}
           </div>
           <div
             className="action-container register"
             onClick={() => setOpenRegister(true)}
           >
             <span className="action-title">REGISTER</span>
-            <JoinIcon />
+            <RegisterIcon />
+            {openRegister && (
+              <Register
+                isOpen={openRegister}
+                onClose={() => setOpenRegister(false)}
+              />
+            )}
           </div>
         </div>
-      )}
-      {openLogin && (
-        <Login isOpen={openLogin} onClose={() => setOpenLogin(false)} />
-      )}
-      {openRegister && (
-        <Login isOpen={openRegister} onClose={() => setOpenRegister(false)} />
       )}
     </div>
   );

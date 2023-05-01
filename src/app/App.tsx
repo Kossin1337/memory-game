@@ -171,7 +171,7 @@ export const App = () => {
       });
       resetTurn();
     } else {
-      setTimeout(() => resetTurn(), 500);
+      setTimeout(() => resetTurn(), 400); // before was 500, change it to match animation time
     }
   };
 
@@ -199,6 +199,7 @@ export const App = () => {
         <Sidebar grid={grid} setGrid={changeGrid} />
         <Game
           loaded={loaded}
+          finished={finished}
           grid={grid}
           turns={turns}
           cards={cards}

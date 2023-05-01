@@ -4,7 +4,6 @@ import { ICard } from "@/types/types";
 import Card from "./Card";
 
 interface IGrid {
-  loaded: boolean;
   grid: string;
   cards: ICard[] | [];
   handleChoice: (card: ICard) => void;
@@ -14,7 +13,6 @@ interface IGrid {
 }
 
 const Grid = ({
-  loaded,
   grid,
   cards,
   handleChoice,

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 // import { signIn, signOut, useSession } from 'next-auth/client';
 
-import { motion } from "framer-motion";
-
 import ModalTemplate from "../modal/ModalTemplate";
 
 import "./Login.scss";

@@ -5,11 +5,13 @@ import { ICard } from "@/types/types";
 import GameNavigation from "./GameNavigation";
 import Grid from "./grid/Grid";
 import PlayAgainButton from "./PlayAgainButton";
+import GameFinished from "./game-win-modal/GameFinished";
 
 import "./Game.scss";
 
 interface IGame {
   loaded: boolean;
+  finished: boolean;
   grid: string;
   turns: number;
   cards: ICard[] | [];
@@ -22,6 +24,7 @@ interface IGame {
 
 const Game = ({
   loaded,
+  finished,
   grid,
   turns,
   cards,
@@ -33,10 +36,10 @@ const Game = ({
 }: IGame) => {
   return (
     <div className="app-content">
+      {finished && <GameFinished turns={turns}/>}
       <GameNavigation />
       {loaded && (
         <Grid
-          loaded={loaded}
           grid={grid}
           cards={cards}
           handleChoice={handleChoice}
