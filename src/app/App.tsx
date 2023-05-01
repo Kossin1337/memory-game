@@ -154,6 +154,14 @@ export const App = () => {
     if (choiceOne && choiceTwo) {
       setDisabled(true);
       matchCards(choiceOne, choiceTwo);
+      /* game ending logic */
+      const allMatched = cards.every((card) => card.matched);
+
+      if (allMatched) {
+        console.log("All cards matched!");
+      } else {
+        console.log("Not all cards matched yet.");
+      }
     }
   }, [choiceOne, choiceTwo]);
 

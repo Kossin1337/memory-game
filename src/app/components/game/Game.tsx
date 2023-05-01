@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ICard } from "@/types/types";
 
@@ -34,9 +34,17 @@ const Game = ({
   disabled,
   shuffleCards,
 }: IGame) => {
+  const [openSummmary, setOpenSummary] = useState<boolean>(!finished);
+
   return (
     <div className="app-content">
-      {finished && <GameFinished turns={turns}/>}
+      {finished && (
+        <GameFinished
+          turns={turns}
+          isOpen={openSummmary}
+          onClose={() => setOpenSummary(false)}
+        />
+      )}
       <GameNavigation />
       {loaded && (
         <Grid

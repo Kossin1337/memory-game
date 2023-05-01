@@ -13,7 +13,7 @@ const SettingsModal = ({ isOpen, onClose }: IModal) => {
   // if logged in. Add reset progress & delete an account
 
   return (
-    <ModalTemplate isOpen={isOpen} onClose={onClose}>
+    <ModalTemplate key="settings-modal" isOpen={isOpen} onClose={onClose}>
       <div className="settings">
         <span className="settings-header">Settings</span>
         <div className="theme-wrapper">
