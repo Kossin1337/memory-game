@@ -51,7 +51,7 @@ const Login: React.FC<IRegister> = ({ isOpen, onClose }: IRegister) => {
   };
 
   return (
-    <ModalTemplate isOpen={isOpen} onClose={onClose}>
+    <ModalTemplate key="register-modal" isOpen={isOpen} onClose={onClose}>
       <div className="register-modal">
         <h2 className="modal-header">LOGIN</h2>
         <form onSubmit={handleFormSubmit}>

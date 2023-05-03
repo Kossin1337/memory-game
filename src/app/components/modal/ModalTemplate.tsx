@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { MouseEvent, MouseEventHandler, useCallback } from "react";
 import { motion } from "framer-motion";
 
 import { CloseIcon } from "../game/icons/CloseIcon";
@@ -15,15 +15,13 @@ interface IModalTemplate {
 /* Add animation for modal */
 
 const ModalTemplate = ({ children, isOpen, onClose }: IModalTemplate) => {
-  const handleEscape = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.stopPropagation();
-        onClose();
-      }
-    },
-    [onClose]
-  );
+  const handleClick = (e: MouseEvent) => {
+    onClose();
+  };
+
+  const handleContentClick = (e: MouseEvent) => {
+    e.stopPropagation();
+  };
 
   return (
     <>
@@ -34,7 +32,7 @@ const ModalTemplate = ({ children, isOpen, onClose }: IModalTemplate) => {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          onClick={onClose}
+          onClick={handleClick}
         >
           <motion.div
             className="modal-content"
@@ -42,6 +40,7 @@ const ModalTemplate = ({ children, isOpen, onClose }: IModalTemplate) => {
             initial="hidden"
             animate={isOpen ? "visible" : "hidden"}
             exit="exit"
+            onClick={handleContentClick}
           >
             <button className="modal-close" onClick={onClose}>
               <CloseIcon />

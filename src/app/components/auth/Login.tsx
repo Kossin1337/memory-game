@@ -29,7 +29,7 @@ const Login: React.FC<ILogin> = ({ isOpen, onClose }: ILogin) => {
   // };
 
   return (
-    <ModalTemplate isOpen={isOpen} onClose={onClose}>
+    <ModalTemplate key="login-modal" isOpen={isOpen} onClose={onClose}>
       <div className="login-modal">
         <h2 className="modal-header">LOGIN</h2>
         <form onSubmit={handleSignIn}>

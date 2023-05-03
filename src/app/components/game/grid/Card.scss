@@ -2,6 +2,9 @@
   position: relative;
   display: grid;
   place-content: center;
+  aspect-ratio: 1;
+  min-width: 120px;
+  min-height: 120px;
 
   .front {
     transform: rotateY(90deg);
@@ -15,6 +18,8 @@
   }
 
   .flipped {
+    width: 100%;
+    height: 100%;
     .front {
       transform: rotateY(0deg);
       transition-delay: 0.15s;
@@ -27,6 +32,8 @@
   }
 
   .no-flip {
+    width: 100%;
+    height: 100%;
     .front {
       opacity: 0.75;
     }
