@@ -18,6 +18,12 @@ const GameNavigation = () => {
       )}
       <h1 className="navigation-header">Match the cards</h1>
       <div
+        className="grid-icon"
+        onClick={() => setOpenSettings((prev) => !prev)}
+      >
+        <SettingsIcon />
+      </div>
+      <div
         className="settings-icon"
         onClick={() => setOpenSettings((prev) => !prev)}
       >

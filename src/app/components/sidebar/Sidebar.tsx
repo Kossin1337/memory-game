@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import SidebarNavigation from "./sidebar-navigation/SidebarNavigation";
 import Difficulty from "./difficulty/Difficulty";
 import CardDecks from "./decks/CardDecks";
 import Statistics from "./statistics/Statistics";
@@ -38,7 +39,8 @@ const Sidebar = ({ grid, setGrid }: ISidebar) => {
       variants={sidebarVariant}
       className="sidebar"
     >
-      <h2 className="sidebar-title">Welcome G!</h2>
+      {/* <h2 className="sidebar-title">Welcome G!</h2> */}
+      <SidebarNavigation />
       <div className="content">
         <div className="toggle-options">
           <div
